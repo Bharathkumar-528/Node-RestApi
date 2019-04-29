@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+      <head>    
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <!-- widget stuff here -->
+          <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.14.0/js/okta-sign-in.min.js" type="text/javascript"></script>
+          <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.14.0/css/okta-sign-in.min.css" type="text/css"rel="stylesheet"/>
+          <!-- Theme file: Customize or replace this file if you want to override our default styles -->
+          <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.14.0/css/okta-theme.css" type="text/css" rel="stylesheet"/>
+          
+          <!--Kendo related-->
+          <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common.min.css" />
+          <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.blueopal.min.css" />
+            <script src="http://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+            
+          <!--Angular related-->      
+          <!--<script src="../js/angular.min.js"></script>-->
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+          <!--main js link-->
+          <script src="../js/main.js"></script> 
+          
+          <!--socket.io js-->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+      </head>
+
+
+    <body>
+
+        <!--Head Nav bar-->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">Q and A</a>
+			</div>
+			<ul class="nav navbar-nav">
+			  <li class="active"><a href="#">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			  <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+			</ul>
+		  </div>
+        </nav>
+        
+        <!--Container-->
+        <div class="container">	
+            <div ng-app="QandAApp" >
+                <div ng-controller="QandACntrl">  
+                    <strong>User : </strong>{{firstName}}      
+                    <div  id="newQuetion">
+                            <button class="btn btn-danger">Add a quetion</button>
+                    </div>      
+                    
+                        <div class="panel panel-primary">
+                                <div class="panel-heading">How to install nodejs?</div>
+                                    <div class="panel-body">                                                                        
+                                        <p id="ansContent">
+                                            Answers
+                                        </p>
+                                        <button type="button" class="btn btn-success" ng-click = "updateanswer()">New Answer</button>
+                                        <button type="button" class="btn btn-success" ng-click = "upvote()">Upvote</button>
+                                        <button type="button" class="btn btn-success" ng-click = "downVote()">Downvote</button>
+                                        {{responsedata.dataFromDb[1]}}                                                                
+                                    </div>
+                        </div>                                             
+                </div>
+            </div>
+        </div>              
+    </body> 
+</html>

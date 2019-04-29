@@ -1,0 +1,21 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "RestApi",
+    "MangoDb",
+    "CRUD"
+  ],
+  "author": "Bharath",
+  "license": "MIT",
+  "dependencies": {
+    "angular6": "^1.0.0",
+    "server": "^1.0.18"
+  }
+}
