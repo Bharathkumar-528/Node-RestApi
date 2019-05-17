@@ -5,21 +5,34 @@ exports.create = (req, res) => {
     // Validate request
     /*if(!req.body.content) {
         return res.status(400).send({
-            message: "User content can not be empty"
+            message: "User content can not be empty allow please add any data",
         });
-    }*/    
+    }*/ 
 
-    // Create a Note
+    console.log(req.body[0]["QuestionID"])
+
+    //const question = new questions(req.body)
+
+    // Create a question and answer
     const question = new questions({
-        QuestionID: "Qts1",
-        USerID : "bha1",
-        AnswerId : "Ans1",
-        Question:"Qts1",
-        Upvote:"",
-        Downvote:""
+        QuestionID: req.body[0]["QuestionID"],
+        USerID : req.body[0]["USerID"],
+        Question:req.body[0]["Question"],
+        Answer : req.body[0]["Answer"],
+        Upvote:req.body[0]["Upvote"],
+        Downvote:req.body[0]["Downvote"]
     });
 
-    // Save Note in the database
+    /*const question = new questions({
+        QuestionID: req.body.QuestionID,
+        USerID : req.body.USerID,
+        Question:req.body.Question,
+        Answer : [],
+        Upvote:"",
+        Downvote:""
+    });*/
+    console.log(question);
+    // Save question and answer in the database
     question.save()
     .then(data => {
         res.send(data);
@@ -31,7 +44,7 @@ exports.create = (req, res) => {
 
 };
 
-// Retrieve and return all notes from the database.
+// Retrieve and return all question and answer from the database.
 exports.findAll = (req, res) => {
     questions.find()
     .then(allquestions => {
@@ -43,7 +56,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single note with a noteId
+// Find a single note with a questionid
 exports.findOne = (req, res) => {
     questions.findById(req.params.QuestionID)
     .then(question => {
@@ -65,7 +78,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a note identified by the noteId in the request
+// Update a note identified by the questionId in the request
 exports.update = (req, res) => {
         // Validate Request
     /*if(!req.body.content) {
@@ -77,6 +90,7 @@ exports.update = (req, res) => {
     // Find note and update it with the request body
     questions.findByIdAndUpdate(req.params.QuestionID, {        
         Question:"Qts1 qts1",
+        Answer:["",""],
         Upvote:"",
         Downvote:""
     }, {new: true})
@@ -99,7 +113,7 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a note with the specified noteId in the request
+// Delete a note with the specified questionid in the request
 exports.delete = (req, res) => {
     questions.findByIdAndRemove(req.params.QuestionID)
     .then(question => {
